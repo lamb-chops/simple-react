@@ -29,14 +29,17 @@ const DUMMY_EXPENSES = [
   },
 ];
 
+
 function App() {
   //sets init array values to hardcoded ones above then we add to that array with state
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES)
   //how to update state when dependent on prev value in state
   const addExpenseHandler = (expense) => {
-    setExpenses(prevExpenses => {
-      return [expense, ...prevExpenses]
-    })
+    //prevState var is latest snapshot (values) of the variables, use if state depends on previous state, spread operator ...prevState
+    //pass in anony func to setFunction ex: setAmount((prevState)=>{...prevState, updateExpressionHere })
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
   };
 
   return (
